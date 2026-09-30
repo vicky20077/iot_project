@@ -1,0 +1,275 @@
+/* ==========================================================================
+   AI Obstacle Assistance — Dashboard styling
+   High-contrast, dark, accessibility-first. Large type, minimal decoration.
+   ========================================================================== */
+
+:root {
+  --bg: #0d0f10;
+  --surface: #17191b;
+  --surface-raised: #1f2224;
+  --border: #33383b;
+  --text: #f3f5f4;
+  --text-dim: #a7aeb0;
+  --accent: #ffb648;       /* warm amber: the one bold color in the page */
+  --safe: #4fd18b;
+  --medium: #f2c14e;
+  --high: #ff9142;
+  --critical: #ff5a52;
+  --font-body: "Inter", "Segoe UI", system-ui, -apple-system, sans-serif;
+  --font-mono: "IBM Plex Mono", "Consolas", monospace;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { animation: none !important; transition: none !important; }
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 17px;
+  line-height: 1.5;
+}
+
+/* ---------- Header ---------- */
+.app-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding: 22px 32px;
+  border-bottom: 1px solid var(--border);
+  background: linear-gradient(180deg, #131516 0%, var(--bg) 100%);
+}
+
+.header-title h1 {
+  margin: 0;
+  font-size: 1.5rem;
+  letter-spacing: 0.02em;
+  font-weight: 700;
+}
+
+.subtitle {
+  margin: 4px 0 0;
+  color: var(--text-dim);
+  font-size: 0.95rem;
+}
+
+.prototype-badge {
+  font-size: 0.78rem;
+  color: var(--critical);
+  border: 1px solid var(--critical);
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-weight: 600;
+}
+
+/* ---------- Layout ---------- */
+.layout {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr;
+  gap: 20px;
+  padding: 24px 32px;
+}
+
+.panel { min-width: 0; }
+
+.panel-title {
+  margin: 0 0 14px;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-dim);
+}
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.side-panel { display: flex; flex-direction: column; }
+
+/* ---------- Video ---------- */
+.video-panel .video-frame {
+  background: #000;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  overflow: hidden;
+  aspect-ratio: 4 / 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.video-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* ---------- Status list ---------- */
+.status-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  font-size: 1rem;
+}
+
+.status-list li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.status-list li span:last-child {
+  margin-left: auto;
+  color: var(--text-dim);
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.dot-offline { background: var(--text-dim); }
+.dot-online { background: var(--safe); box-shadow: 0 0 8px var(--safe); }
+.dot-error { background: var(--critical); box-shadow: 0 0 8px var(--critical); }
+
+/* ---------- Detection grid ---------- */
+.detection-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.metric {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.metric-label {
+  color: var(--text-dim);
+  font-size: 0.82rem;
+}
+
+.metric-value {
+  font-size: 1.35rem;
+  font-weight: 700;
+}
+
+/* ---------- Summary strip ---------- */
+.summary-strip {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 24px 28px;
+}
+
+.summary-item {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  text-align: center;
+}
+
+.summary-label {
+  color: var(--text-dim);
+  font-size: 0.82rem;
+  letter-spacing: 0.06em;
+}
+
+.summary-value {
+  font-size: 2.1rem;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ---------- Risk badges ---------- */
+.risk-badge {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 8px;
+  font-size: 1.4rem;
+}
+
+.risk-safe { color: var(--safe); }
+.risk-medium { color: var(--medium); }
+.risk-high { color: var(--high); }
+.risk-critical {
+  color: var(--critical);
+  animation: pulse 1.1s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.55; }
+}
+
+/* ---------- Alerts ---------- */
+.alerts-panel {
+  grid-column: 1 / -1;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 20px 24px;
+}
+
+.alerts-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  max-height: 220px;
+  overflow-y: auto;
+}
+
+.alerts-list li {
+  display: flex;
+  gap: 14px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--border);
+  font-size: 0.95rem;
+}
+
+.alerts-list li:last-child { border-bottom: none; }
+
+.alert-time {
+  font-family: var(--font-mono);
+  color: var(--text-dim);
+  min-width: 74px;
+}
+
+.alerts-empty { color: var(--text-dim); }
+
+/* ---------- Footer ---------- */
+.app-footer {
+  padding: 16px 32px 28px;
+  color: var(--text-dim);
+  font-size: 0.82rem;
+  text-align: center;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 880px) {
+  .layout { grid-template-columns: 1fr; padding: 16px; }
+  .summary-strip { grid-template-columns: repeat(2, 1fr); }
+  .app-header { padding: 16px 18px; }
+}

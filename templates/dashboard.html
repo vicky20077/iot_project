@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Obstacle Assistance — Real-Time Spatial Awareness</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+<header class="app-header">
+  <div class="header-title">
+    <h1>AI OBSTACLE ASSISTANCE</h1>
+    <p class="subtitle">Real-Time Spatial Awareness — Prototype</p>
+  </div>
+  <div class="prototype-badge">PROTOTYPE — NOT A CERTIFIED NAVIGATION AID</div>
+</header>
+
+<main class="layout">
+
+  <!-- LEFT: live video -->
+  <section class="panel video-panel">
+    <h2 class="panel-title">Live Camera</h2>
+    <div class="video-frame">
+      <img id="video-feed" src="/video_feed" alt="Live obstacle detection video feed">
+    </div>
+  </section>
+
+  <!-- RIGHT: status + detection -->
+  <aside class="panel side-panel">
+
+    <div class="card">
+      <h2 class="panel-title">System Status</h2>
+      <ul class="status-list">
+        <li><span id="dot-camera" class="dot dot-offline"></span> Camera <span id="status-camera">Offline</span></li>
+        <li><span id="dot-arduino" class="dot dot-offline"></span> Arduino <span id="status-arduino">Offline</span></li>
+        <li><span id="dot-roboflow" class="dot dot-offline"></span> Roboflow <span id="status-roboflow">Offline</span></li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2 class="panel-title">Detection</h2>
+      <div class="detection-grid">
+        <div class="metric">
+          <span class="metric-label">Object</span>
+          <span id="metric-object" class="metric-value">—</span>
+        </div>
+        <div class="metric">
+          <span class="metric-label">Confidence</span>
+          <span id="metric-confidence" class="metric-value">—</span>
+        </div>
+        <div class="metric">
+          <span class="metric-label">Distance</span>
+          <span id="metric-distance" class="metric-value">—</span>
+        </div>
+        <div class="metric">
+          <span class="metric-label">Approach</span>
+          <span id="metric-approaching" class="metric-value">—</span>
+        </div>
+        <div class="metric">
+          <span class="metric-label">Risk</span>
+          <span id="metric-risk" class="metric-value risk-badge risk-safe">—</span>
+        </div>
+      </div>
+    </div>
+
+  </aside>
+
+  <!-- Big readable summary strip -->
+  <section class="panel summary-strip">
+    <div class="summary-item">
+      <span class="summary-label">DISTANCE</span>
+      <span id="summary-distance" class="summary-value">— cm</span>
+    </div>
+    <div class="summary-item">
+      <span class="summary-label">OBJECT</span>
+      <span id="summary-object" class="summary-value">—</span>
+    </div>
+    <div class="summary-item">
+      <span class="summary-label">CONFIDENCE</span>
+      <span id="summary-confidence" class="summary-value">—</span>
+    </div>
+    <div class="summary-item">
+      <span class="summary-label">APPROACHING</span>
+      <span id="summary-approaching" class="summary-value">—</span>
+    </div>
+    <div class="summary-item">
+      <span class="summary-label">RISK</span>
+      <span id="summary-risk" class="summary-value risk-badge risk-safe">—</span>
+    </div>
+  </section>
+
+  <!-- Recent alerts -->
+  <section class="panel alerts-panel">
+    <h2 class="panel-title">Recent Alerts</h2>
+    <ul id="alerts-list" class="alerts-list">
+      <li class="alerts-empty">No alerts yet.</li>
+    </ul>
+  </section>
+
+</main>
+
+<footer class="app-footer">
+  Prototype system. The spoken warning is generated only for close/approaching detected obstacles.
+  Does not guarantee collision prevention or reliable navigation.
+</footer>
+
+<script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
+</body>
+</html>

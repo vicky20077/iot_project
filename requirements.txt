@@ -1,0 +1,15 @@
+Flask==3.0.3
+opencv-python==4.10.0.84
+numpy==1.26.4
+pyserial==3.5
+python-dotenv==1.0.1
+pyttsx3==2.90
+inference-sdk==0.9.17
+
+# Optional conversational agent / wake word
+google-genai>=1.0.0
+sounddevice>=0.5.0
+SpeechRecognition>=3.10.0
+openwakeword>=0.6.0
+onnxruntime>=1.18.0
+
